@@ -15,12 +15,13 @@ export function HeroSection() {
           <h1
             className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl"
           >
-            Đặt chuyến xe an toàn và tiện lợi
+            Đặt xe tiện chuyến,xe ghép,xe đi chung giá rẻ tiện lợi và dễ dàng
           </h1>
           <p
             className="mx-auto mt-6 max-w-xl text-lg text-gray-100 sm:text-xl"
           >
-            Kết nối hàng nghìn tài xế trên khắp cả nước, đưa bạn đến mọi điểm đến với giá cả phải chăng
+            Kết nối hàng nghìn lái xe trên cả nước,tận dụng chuyến đi quay đầu,đưa bạn đến mọi điểm với giá cả tiết kiệm
+
           </p>
 
         </div>

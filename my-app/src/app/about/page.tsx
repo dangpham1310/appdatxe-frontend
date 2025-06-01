@@ -1,13 +1,7 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
-import Image from 'next/image'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Phone, Mail, MapPin, Shield, Star, Clock, Users, Award, Car, CheckCircle2, Headphones, Settings, Target, Zap } from 'lucide-react'
-import { usePathname } from 'next/navigation'
-
-gsap.registerPlugin(ScrollTrigger)
+import Image from 'next/image'
 
 const stats = [
   { number: '100K+', label: 'Người dùng tin tưởng', icon: Users },
@@ -71,126 +65,19 @@ const advantages = [
 ]
 
 export default function AboutPage() {
-  const heroRef = useRef(null)
-  const contentRefs = useRef<(HTMLDivElement | null)[]>([])
-  const statsRefs = useRef<(HTMLDivElement | null)[]>([])
-  const featureRefs = useRef<(HTMLDivElement | null)[]>([])
-  const pathname = usePathname()
-
-  useEffect(() => {
-    let ctx: any
-    
-    const initAnimations = async () => {
-      const { gsap } = await import('gsap')
-      const { ScrollTrigger } = await import('gsap/ScrollTrigger')
-      
-      // Clear any existing ScrollTriggers
-      if (ScrollTrigger) {
-        ScrollTrigger.getAll().forEach(t => t.kill())
-      }
-
-      gsap.registerPlugin(ScrollTrigger)
-
-      // Create a new context
-      ctx = gsap.context(() => {
-        // Hero text reveal
-        const heroTimeline = gsap.timeline({
-          scrollTrigger: {
-            trigger: heroRef.current,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse'
-          }
-        })
-
-        heroTimeline
-          .from('.hero-title', {
-            y: 50,
-            opacity: 0,
-            duration: 1,
-            ease: 'power3.out'
-          })
-          .from('.hero-description', {
-            y: 30,
-            opacity: 0,
-            duration: 1,
-            ease: 'power3.out'
-          }, '-=0.5')
-
-        // Content sections reveal
-        contentRefs.current.forEach((ref, index) => {
-          if (ref) {
-            gsap.from(ref, {
-              opacity: 0,
-              y: 30,
-              duration: 1,
-              scrollTrigger: {
-                trigger: ref,
-                start: 'top 80%',
-                toggleActions: 'play none none reverse'
-              },
-              delay: index * 0.2
-            })
-          }
-        })
-
-        // Policy cards stagger
-        gsap.from('.policy-card', {
-          opacity: 0,
-          y: 30,
-          duration: 0.8,
-          stagger: 0.2,
-          scrollTrigger: {
-            trigger: '.policy-grid',
-            start: 'top 80%',
-            toggleActions: 'play none none reverse'
-          },
-          ease: 'back.out(1.7)'
-        })
-
-        // Terms cards stagger
-        gsap.from('.terms-card', {
-          opacity: 0,
-          y: 30,
-          duration: 0.8,
-          stagger: 0.2,
-          scrollTrigger: {
-            trigger: '.terms-grid',
-            start: 'top 80%',
-            toggleActions: 'play none none reverse'
-          },
-          ease: 'back.out(1.7)'
-        })
-      })
-
-      // Scroll to top when component mounts
-      window.scrollTo(0, 0)
-    }
-
-    // Initialize animations
-    initAnimations()
-
-    // Cleanup function
-    return () => {
-      if (ctx) {
-        ctx.revert() // This will clean up all GSAP animations
-      }
-    }
-  }, [pathname]) // Re-run when pathname changes
-
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
       <div
-        ref={heroRef}
         className="relative h-[70vh] w-full bg-[url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1920&auto=format&fit=crop&q=80')] bg-cover bg-center bg-fixed bg-no-repeat"
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/50" />
         <div className="relative h-full flex items-center justify-center text-center">
           <div className="max-w-4xl px-4">
-            <h1 className="hero-title text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6">
               Về Đón Và Đến
             </h1>
-            <p className="hero-description text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto">
               Nền tảng đặt xe trực tuyến hàng đầu Việt Nam
             </p>
           </div>
@@ -201,7 +88,6 @@ export default function AboutPage() {
       <div className="max-w-7xl mx-auto px-4 py-20 sm:px-6 lg:px-8">
         {/* Giới thiệu */}
         <div 
-          ref={el => contentRefs.current[0] = el}
           className="mb-32"
         >
           <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">
@@ -238,17 +124,15 @@ export default function AboutPage() {
 
         {/* Tính năng nổi bật - NEW */}
         <div 
-          ref={el => contentRefs.current[1] = el}
           className="mb-32"
         >
           <h2 className="text-4xl font-bold text-gray-900 mb-16 text-center">
             Tính năng nổi bật
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
+            {features.map((feature) => (
               <div
                 key={feature.title}
-                ref={el => featureRefs.current[index] = el}
                 className="p-6 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300"
               >
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gray-900 text-white mb-4">
@@ -263,23 +147,21 @@ export default function AboutPage() {
 
         {/* Thành tựu */}
         <div 
-          ref={el => contentRefs.current[2] = el}
           className="mb-32 py-20 bg-gray-50 rounded-3xl"
         >
           <h2 className="text-4xl font-bold text-gray-900 mb-16 text-center">
             Thành tựu của chúng tôi
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 px-8">
-            {stats.map((stat, index) => (
+            {stats.map((stat) => (
               <div
                 key={stat.label}
-                ref={el => statsRefs.current[index] = el}
                 className="text-center group"
               >
                 <div className="inline-flex items-center justify-center w-16 h-16 mb-6 rounded-full bg-gray-900 text-white transform group-hover:scale-110 transition-transform duration-300">
                   <stat.icon className="w-8 h-8" />
                 </div>
-                <div className="number text-5xl font-bold text-gray-900 mb-3">{stat.number}</div>
+                <div className="text-5xl font-bold text-gray-900 mb-3">{stat.number}</div>
                 <div className="text-gray-600 text-lg">{stat.label}</div>
               </div>
             ))}
@@ -288,7 +170,6 @@ export default function AboutPage() {
 
         {/* Sứ mệnh & Tầm nhìn */}
         <div 
-          ref={el => contentRefs.current[3] = el}
           className="mb-32"
         >
           <h2 className="text-4xl font-bold text-gray-900 mb-16 text-center">
@@ -312,14 +193,13 @@ export default function AboutPage() {
 
         {/* Giá trị cốt lõi */}
         <div 
-          ref={el => contentRefs.current[4] = el}
           className="mb-32"
         >
           <h2 className="text-4xl font-bold text-gray-900 mb-16 text-center">
             Giá trị cốt lõi
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {values.map((value, index) => (
+            {values.map((value) => (
               <div 
                 key={value.title}
                 className="p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300"
@@ -338,14 +218,13 @@ export default function AboutPage() {
 
         {/* Ưu điểm vượt trội - NEW */}
         <div 
-          ref={el => contentRefs.current[5] = el}
           className="mb-32 bg-gray-900 text-white p-16 rounded-3xl"
         >
           <h2 className="text-4xl font-bold mb-16 text-center">
             Ưu điểm vượt trội
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {advantages.map((advantage, index) => (
+            {advantages.map((advantage) => (
               <div 
                 key={advantage.title}
                 className="p-8 bg-gray-800 rounded-2xl hover:bg-gray-700 transition-colors duration-300"
@@ -364,7 +243,6 @@ export default function AboutPage() {
 
         {/* Liên hệ */}
         <div 
-          ref={el => contentRefs.current[6] = el}
           className="bg-gray-900 text-white p-12 rounded-3xl"
         >
           <h2 className="text-4xl font-bold mb-12 text-center">

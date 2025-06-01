@@ -16,13 +16,13 @@ export function PopularDestinations() {
       description: 'Thủ đô nghìn năm văn hiến',
     },
     {
-      name: 'TP. Hồ Chí Minh',
-      image: 'https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=800&auto=format&fit=crop&q=80',
+      name: 'Hà Nam',
+      image: '/images/z6644199048426_0a93a5c79cec17bed9b3e769aa398931.jpg',
       description: 'Thành phố không ngủ',
     },
     {
-      name: 'Đà Nẵng',
-      image: 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&auto=format&fit=crop&q=80',
+      name: 'Ninh Bình',
+      image: '/images/hanam.jpg',
       description: 'Thành phố đáng sống nhất Việt Nam',
     },
   ]

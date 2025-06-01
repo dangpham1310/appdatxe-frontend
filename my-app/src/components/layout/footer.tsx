@@ -9,19 +9,11 @@ const navigation = {
     { name: 'Về chúng tôi', href: '/about' },
     { name: 'Chính sách', href: '/policy' },
     { name: 'Điều khoản bảo mật', href: '/privacy' },
-    { name: 'Liên hệ', href: '/contact' },
-    { name: 'Trở thành tài xế', href: '/driver' },
-  ],
-  support: [
-    { name: 'Trung tâm hỗ trợ', href: '/support' },
-    { name: 'Câu hỏi thường gặp', href: '/faq' },
-    { name: 'Hướng dẫn sử dụng', href: '/guide' },
-    { name: 'Báo cáo sự cố', href: '/report' },
   ],
   social: [
     {
       name: 'Facebook',
-      href: '#',
+      href: 'https://www.facebook.com/profile.php?id=100064448569495',
       icon: Facebook,
     },
     {
@@ -38,7 +30,7 @@ const navigation = {
   contact: [
     {
       name: 'Địa chỉ',
-      content: '123 Đường ABC, Quận XYZ, TP. Hồ Chí Minh',
+      content: 'Đô thị Dệt may ,thành phố Nam Định,tỉnh Nam Định',
       icon: MapPin,
     },
     {
@@ -88,25 +80,6 @@ export function Footer() {
             </h3>
             <ul className="space-y-3">
               {navigation.main.map((item) => (
-                <li key={item.name}>
-                  <Link
-                    href={item.href}
-                    className="text-gray-600 hover:text-gray-900 transition-colors text-sm"
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Hỗ trợ */}
-          <div>
-            <h3 className="text-sm font-semibold text-gray-900 tracking-wider uppercase mb-4">
-              Hỗ trợ
-            </h3>
-            <ul className="space-y-3">
-              {navigation.support.map((item) => (
                 <li key={item.name}>
                   <Link
                     href={item.href}

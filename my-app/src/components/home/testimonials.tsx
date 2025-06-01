@@ -8,21 +8,21 @@ import { Star } from 'lucide-react'
 
 const testimonials = [
   {
-    name: 'Nguyễn Văn A',
+    name: 'Vũ Minh Long',
     role: 'Doanh nhân',
     content: 'Dịch vụ rất tốt, tài xế chuyên nghiệp và đúng giờ. Tôi sẽ tiếp tục sử dụng trong tương lai.',
     avatar: '/images/avatar-1.jpg',
     rating: 5,
   },
   {
-    name: 'Trần Thị B',
+    name: 'Nguyễn Kim Thanh',
     role: 'Giáo viên',
     content: 'Đặt xe rất dễ dàng, giá cả hợp lý. Tài xế rất thân thiện và nhiệt tình.',
     avatar: '/images/avatar-2.jpg',
     rating: 5,
   },
   {
-    name: 'Lê Văn C',
+    name: 'Trần Xuân Hùng',
     role: 'Kỹ sư',
     content: 'An toàn và đáng tin cậy. Tôi đã giới thiệu cho nhiều bạn bè của mình.',
     avatar: '/images/avatar-3.jpg',

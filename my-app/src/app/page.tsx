@@ -115,14 +115,7 @@ export default function Home() {
               </p>
             </div>
             
-            <div className="mt-8">
-              <a 
-                href="/register"
-                className="inline-flex items-center px-8 py-4 text-lg font-medium text-white bg-green-600 hover:bg-green-700 rounded-xl transition-colors duration-300"
-              >
-                Đăng Ký Ngay
-              </a>
-            </div>
+
           </div>
         </div>
       </section>

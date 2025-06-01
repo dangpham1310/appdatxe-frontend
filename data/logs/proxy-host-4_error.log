@@ -1,1 +1,0 @@
-2025/05/27 09:05:35 [error] 179#179: *102 connect() failed (111: Connection refused) while connecting to upstream, client: 104.23.187.22, server: toolios.store, request: "GET / HTTP/1.1", upstream: "http://96.9.255.206:5010/", host: "toolios.store"
